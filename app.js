@@ -3,8 +3,9 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
+var redisUrl = process.env.REDIS_URL || "127.0.0.1";
 var redis = require("redis"),
-    redisClient = redis.createClient(6379, "127.0.0.1");
+    redisClient = redis.createClient(6379, redisUrl);
 
 var port = process.env.PORT || 5000,
     oneDay = 86400000;
