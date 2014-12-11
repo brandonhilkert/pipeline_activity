@@ -20,7 +20,6 @@
   "homepage": "https://github.com/brandonhilkert/pipeline_activity",
   "dependencies": {
     "express": "^4.10.5",
-    "http": "0.0.0",
     "redis": "^0.12.1",
     "socket.io": "^1.2.1"
   }
