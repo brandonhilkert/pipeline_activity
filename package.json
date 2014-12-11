@@ -1,0 +1,27 @@
+{
+  "name": "pipeline_activity",
+  "version": "0.0.1",
+  "description": "A web app to see the activity within PipelineDeals.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brandonhilkert/pipeline_activity"
+  },
+  "private": true,
+  "author": "Brandon Hilkert",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brandonhilkert/pipeline_activity/issues"
+  },
+  "homepage": "https://github.com/brandonhilkert/pipeline_activity",
+  "dependencies": {
+    "express": "^4.10.5",
+    "http": "0.0.0",
+    "redis": "^0.12.1",
+    "socket.io": "^1.2.1"
+  }
+}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Pipeline Activity</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+    <script src="//cdn.socket.io/socket.io-1.2.1.js" type="text/javascript"></script>
+    <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css" rel='stylesheet' type="text/css" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css" rel='stylesheet' type="text/css" />
+    <link href="css/skeleton.css" rel='stylesheet' type="text/css" />
+    <style>
+      .fa {
+        font-size: 10rem !important;
+      }
+
+      .models {
+        margin-top: 4rem;
+      }
+
+      .models .columns {
+        text-align: center;
+        position: relative;
+      }
+
+      .models .columns h4 {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      .circle {
+        cursor: pointer;
+        border: 4px solid rgba(001, 106, 187, 1);
+        border-radius: 50%;
+        background: rgba(001, 106, 187, .5);
+        opacity: 1;
+        position: absolute;
+        top: 40px;
+        left: 50%;
+        z-index: 1;
+      }
+    </style>
+
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="one-half column">
+          <h1>Pipeline Activity</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="container models">
+      <div class="row">
+        <div class="three columns person">
+          <i class="fa fa-child person"></i>
+          <br />
+          <h4>People</h4>
+          <h1>0</h1>
+        </div>
+        <div class="three columns deal">
+          <i class="fa fa-briefcase"></i>
+          <br />
+          <h4>Deals</h4>
+          <h1>0</h1>
+        </div>
+        <div class="three columns company">
+          <i class="fa fa-building"></i>
+          <br />
+          <h4>Companies</h4>
+          <h1>0</h1>
+        </div>
+        <div class="three columns calendar_entry">
+          <i class="fa fa-calendar"></i>
+          <br />
+          <h4>Tasks/Entries</h4>
+          <h1>0</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="container models">
+      <div class="row">
+        <div class="three columns note">
+          <i class="fa fa-comment"></i>
+          <br />
+          <h4>Notes</h4>
+          <h1>0</h1>
+        </div>
+        <div class="three columns comment">
+          <i class="fa fa-comments"></i>
+          <br />
+          <h4>Comments</h4>
+          <h1>0</h1>
+        </div>
+        <div class="three columns user">
+          <i class="fa fa-user user"></i>
+          <br />
+          <h4>Users</h4>
+          <h1>0</h1>
+        </div>
+        <div class="three columns account">
+          <i class="fa fa-users"></i>
+          <br />
+          <h4>Accounts</h4>
+          <h1>0</h1>
+        </div>
+      </div>
+    </div>
+    <script>
+      io().on('activity', function(msg){
+        Beacon.show(msg.model);
+      });
+
+      Beacon = {
+        show: function(model) {
+          var $circle = $('<div class="circle"></div>');
+
+          $circle.animate({
+            'width': '200px',
+            'height': '200px',
+            'margin-top': '-100px',
+            'margin-left': '-100px',
+            'opacity': '0'
+          }, 1000);
+
+          $("." + model).parents(".columns").prepend($circle);
+          var $h1 = $("." + model).find("h1")
+          var count = parseInt($h1.html())
+          $h1.html(count + 1);
+
+          setTimeout(function __remove() {
+            $circle.remove();
+          }, 1000);
+        }
+
+      }
+    </script>
+  </body>
+</html>
+
+
+
