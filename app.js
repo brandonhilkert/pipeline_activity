@@ -7,7 +7,7 @@ var redisUrl = process.env.REDIS_URL || "127.0.0.1";
 var redis = require("redis"),
     redisClient = redis.createClient(6379, redisUrl);
 
-var port = process.env.PORT || 5000,
+var port = process.env.PORT || 9999,
     oneDay = 86400000;
 
 app.use(express.static('public', { maxAge: oneDay }));
