@@ -54,7 +54,7 @@
     <div class="container models">
       <div class="row">
         <div class="three columns person">
-          <i class="fa fa-child person"></i>
+          <i class="fa fa-child"></i>
           <br />
           <h4>People</h4>
           <h1>0</h1>
@@ -74,7 +74,7 @@
         <div class="three columns calendar_entry">
           <i class="fa fa-calendar"></i>
           <br />
-          <h4>Tasks/Entries</h4>
+          <h4>Entries</h4>
           <h1>0</h1>
         </div>
       </div>
@@ -110,10 +110,11 @@
     </div>
     <script>
       io().on('activity', function(msg){
+        console.log(msg.model)
         Beacon.show(msg.model);
       });
 
-      Beacon = {
+      window.Beacon = {
         show: function(model) {
           var $circle = $('<div class="circle"></div>');
 
@@ -125,7 +126,7 @@
             'opacity': '0'
           }, 1000);
 
-          $("." + model).parents(".columns").prepend($circle);
+          $("." + model).prepend($circle);
           var $h1 = $("." + model).find("h1")
           var count = parseInt($h1.html())
           $h1.html(count + 1);
