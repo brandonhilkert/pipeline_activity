@@ -110,7 +110,6 @@
     </div>
     <script>
       io().on('activity', function(msg){
-        console.log(msg.model)
         Beacon.show(msg.model);
       });
 
