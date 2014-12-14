@@ -97,32 +97,32 @@
   </div>
 </div>
 <script>
-io().on('activity', function(msg){
+  io().on('activity', function(msg){
     Beacon.show(msg.model, msg.action);
-    });
+  });
 
-window.Beacon = {
-show: function(model, action) {
-        var $circle = $('<div class="circle ' + action + '"></div>');
+  window.Beacon = {
+    show: function(model, action) {
+      var $circle = $('<div class="circle ' + action + '"></div>');
 
-        $circle.animate({
-            'width': '200px',
-            'height': '200px',
-            'margin-top': '-100px',
-            'margin-left': '-100px',
-            'opacity': '0'
-            }, 1000);
+      $circle.animate({
+          'width': '200px',
+          'height': '200px',
+          'margin-top': '-100px',
+          'margin-left': '-100px',
+          'opacity': '0'
+          }, 1000);
 
-        $("." + model).prepend($circle);
-        var $h1 = $("." + model).find("h1");
-        $h1.html(parseInt($h1.html())+ 1);
+      $("." + model).prepend($circle);
+      var $h1 = $("." + model).find("h1");
+      $h1.html(parseInt($h1.html())+ 1);
 
-        setTimeout(function __remove() {
-            $circle.remove();
-            }, 1000);
-      }
+      setTimeout(function __remove() {
+        $circle.remove();
+      }, 1000);
+    }
 
-}
+  }
 </script>
 </body>
 </html>
