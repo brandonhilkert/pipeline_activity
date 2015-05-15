@@ -31,8 +31,8 @@ redisClient.on("ready", function () {
 
 redisClient.on("pmessage", function (pattern, channel, message) {
   var c = channel.split(":");
-  var model = c[1];
-  var action = c[0];
+  var model = c[0];
+  var action = c[1];
   io.emit("activity", {model: model, action: action});
 });
 
